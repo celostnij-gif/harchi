@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  publicId  String   @unique @default(cuid())
+  name      String
+  phone     String
+  delivery  String
+  city      String?
+  address   String?
+  comment   String?
+  items     String
+  total     Float
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Category {
+  id       Int    @id @default(autoincrement())
+  slug     String @unique
+  nameUk   String
+  nameEn   String
+  sort     Int    @default(0)
+  isActive Boolean @default(true)
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  slug          String   @unique
+  nameUk        String
+  nameEn        String   @default("")
+  shortUk       String   @default("")
+  shortEn       String   @default("")
+  descriptionUk String   @default("")
+  descriptionEn String   @default("")
+  portionUk     String   @default("")
+  portionEn     String   @default("")
+  cats          String   @default("")
+  price         Float
+  oldPrice      Float?
+  image         String
+  badge         String?
+  rating        Float    @default(4.9)
+  reviewsCount  Int      @default(0)
+  kcal          Int?
+  weight        Int?
+  specs         String   @default("[]")
+  productFaq    String   @default("[]")
+  isActive      Boolean  @default(true)
+  sort          Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  author      String
+  roleUk      String   @default("")
+  roleEn      String   @default("")
+  textUk      String
+  textEn      String   @default("")
+  rating      Int      @default(5)
+  productSlug String?
+  isActive    Boolean  @default(true)
+  sort        Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model FaqItem {
+  id        Int      @id @default(autoincrement())
+  qUk       String
+  qEn       String   @default("")
+  aUk       String
+  aEn       String   @default("")
+  isActive  Boolean  @default(true)
+  sort      Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model SectionContent {
+  key       String   @id
+  data      String   @default("{}")
+  visible   Boolean  @default(true)
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model MediaAsset {
+  id        Int      @id @default(autoincrement())
+  filename  String   @unique
+  url       String
+  size      Int      @default(0)
+  createdAt DateTime @default(now())
+}

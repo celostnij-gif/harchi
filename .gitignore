@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+local-*
+.claude
+.z-ai-config
+*.log
+dev.log
+dev.out.log
+test
+prompt
+
+server.log
+# Skills directory
+/skills/
+
+# environment tooling artifacts
+/tool-results/
+.zscripts/dev.pid
+.zscripts/dev.log
+npm-install.log
+
+# data dumps (генеруються скриптами, можно відновити через Store API)
+/download/*.json
+/download/*.log
+/download/generated-*.ts
+
+# local sqlite database (створюється через npm run db:push + seed)
+/db/*.db
+/db/*.db-journal
+
+# zip archives
+*.zip
