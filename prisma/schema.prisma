@@ -54,6 +54,8 @@ model Product {
   weight        Int?
   specs         String   @default("[]")
   productFaq    String   @default("[]")
+  /** Оптові скидки: JSON-рядок [{minQty, price}] — ціна за шт. від кількості. */
+  bulkTiers     String   @default("[]")
   isActive      Boolean  @default(true)
   sort          Int      @default(0)
   createdAt     DateTime @default(now())
@@ -90,6 +92,33 @@ model SectionContent {
   data      String   @default("{}")
   visible   Boolean  @default(true)
   updatedAt DateTime @default(now()) @updatedAt
+}
+
+/// Сторінки та пости, перенесені зі старого сайту harchifood.com.
+/// Джерело: temp/site (бекап WP: /wp-json/wp/v2/pages, /posts).
+/// legacyUrl — старий абсолютний URL (для карт 301/rewrite при переїзді).
+model ContentPage {
+  id          Int       @id @default(autoincrement())
+  slug        String    @unique
+  kind        String    @default("page") // "page" | "post"
+  legacyUrl   String    @default("")
+  titleUk     String
+  titleEn     String    @default("")
+  excerptUk   String    @default("")
+  excerptEn   String    @default("")
+  /// HTML-тіло (очищене від WP-сміття, посилання на /uploads/...)
+  bodyUk      String    @default("")
+  bodyEn      String    @default("")
+  coverImage  String    @default("")
+  publishedAt DateTime?
+  isActive    Boolean   @default(true)
+  sort        Int       @default(0)
+  seoTitleUk  String    @default("")
+  seoDescUk   String    @default("")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([kind, isActive, sort])
 }
 
 model MediaAsset {
