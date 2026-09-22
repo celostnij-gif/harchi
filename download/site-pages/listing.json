@@ -1,0 +1,784 @@
+[
+  {
+    "title": "Кускус марокканський XL зі свининою та овочами, Харчі™",
+    "link": "https://harchifood.com/shop/drugi-stravi/kuskus-marokkanskyj-zi-svynynoyu-ta-ovochamy-harchi/",
+    "priceLow": 115,
+    "priceHigh": 149,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 125
+      },
+      {
+        "qty": 6,
+        "price": 120
+      },
+      {
+        "qty": 12,
+        "price": 115
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/kuskus-marokkanskyj-zi-svynynoyu-ta-ovochamy-harchi-tm.png"
+  },
+  {
+    "title": "Харчо грузинський XL зі смачною куркою, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/harcho-gruzynskyj-xl-zi-smachnoyu-kurkoyu-harchi/",
+    "priceLow": 179,
+    "priceHigh": 229,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 199
+      },
+      {
+        "qty": 6,
+        "price": 189
+      },
+      {
+        "qty": 12,
+        "price": 179
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/harcho-gruzynskyj-xl-zi-smachnoyu-kurkoyu-harchi™.png"
+  },
+  {
+    "title": "Грибний крем-суп французьский XL з печерицями та грінками, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/grybnyj-krem-sup-franczuzskyj-xl-z-pecheryczyamy-ta-grinkamy-harchi/",
+    "priceLow": 115,
+    "priceHigh": 149,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 125
+      },
+      {
+        "qty": 6,
+        "price": 120
+      },
+      {
+        "qty": 12,
+        "price": 115
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/franczuzkyj-grybnyj-krem-sup-z-pecheryczyamy-ta-grinkamy-harchi-tm-french-mushroom-cream-soup-with-champignons-and-croutons-harchi-tm.png"
+  },
+  {
+    "title": "Гороховий суп голландський XL зі свининою та грінками, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/gollandskyj-gorohovyj-sup-xl-zi-svynynoyu-ta-grinkamy-harchi/",
+    "priceLow": 115,
+    "priceHigh": 149,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 125
+      },
+      {
+        "qty": 6,
+        "price": 120
+      },
+      {
+        "qty": 12,
+        "price": 115
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/gollandskyj-gorohovyj-sup-zi-svynynoyu-ta-grinkamy-harchi-tm-dutch-pea-soup-with-pork-and-croutons-harchi-tm-4820225900628.png"
+  },
+  {
+    "title": "Плов узбецький XL зі смачною куркою, Харчі™",
+    "link": "https://harchifood.com/shop/drugi-stravi/plov-xl-uzbeczkyj-zi-smachnoyu-kurkoyu-harchi-tm/",
+    "priceLow": 179,
+    "priceHigh": 229,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 199
+      },
+      {
+        "qty": 6,
+        "price": 189
+      },
+      {
+        "qty": 12,
+        "price": 179
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/plov-xl-uzbeczkyj-zi-smachnoyu-kurkoyu-harchi-tm.png"
+  },
+  {
+    "title": "Місо японський XL суп з креветками та сиром тофу, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/miso-xl-yaponskyj-sup-z-krevetkamy-ta-syrom-tofu-harchi-tm/",
+    "priceLow": 229,
+    "priceHigh": 299,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 249
+      },
+      {
+        "qty": 6,
+        "price": 239
+      },
+      {
+        "qty": 12,
+        "price": 229
+      }
+    ],
+    "expected": true,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/miso-sup-xl-yaponskyj-z-krevetkamy-ta-syrom-tofu-harchi-tm.png"
+  },
+  {
+    "title": "Картопля українська XL зі свининою та овочами, Харчі™",
+    "link": "https://harchifood.com/shop/drugi-stravi/kartoplya-ukrayinska-xl-zi-svynynoyu-ta-ovochamy-harchi-tm/",
+    "priceLow": 115,
+    "priceHigh": 149,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 125
+      },
+      {
+        "qty": 6,
+        "price": 120
+      },
+      {
+        "qty": 12,
+        "price": 115
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/06/kartoplya-ukrayinska-xl-zi-svynynoyu-ta-ovochamy-harchi-tm.png"
+  },
+  {
+    "title": "Том Ям Кунг тайський XL суп з креветками, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/n/",
+    "priceLow": 229,
+    "priceHigh": 299,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 249
+      },
+      {
+        "qty": 6,
+        "price": 239
+      },
+      {
+        "qty": 12,
+        "price": 229
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/05/tom-yam-kung-xl-tajskyj-sup-z-krevetkamy-harchi-tmtom-yam-kung-xl-thai-soup-with-shrimp-harchi-tm.png"
+  },
+  {
+    "title": "Гречка українська XL зі свининою та овочами, Харчі™",
+    "link": "https://harchifood.com/shop/drugi-stravi/grechka-ukrayinska-xl-zi-svynynoyu-ta-ovochamy-harchi-tm/",
+    "priceLow": 115,
+    "priceHigh": 149,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 125
+      },
+      {
+        "qty": 6,
+        "price": 120
+      },
+      {
+        "qty": 12,
+        "price": 115
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/05/grechka-ukrayinska-xl-zi-svynynoyu-ta-ovochamy-harchi-tm-ukrainian-buckwheat-xl-with-pork-and-vegetables-harchi-tm.png"
+  },
+  {
+    "title": "Курячий суп XL татарський з локшиною та куркою, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/kuryachyj-sup-tatarskyj-z-lokshynoyu-ta-kurkoyu-harchi-tm/",
+    "priceLow": 115,
+    "priceHigh": 149,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 125
+      },
+      {
+        "qty": 6,
+        "price": 120
+      },
+      {
+        "qty": 6,
+        "price": 115
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/05/kuryachyj-sup-tatarskyj-z-lokshynoyu-ta-kurkoyu-harchi-tm-chicken-tatar-soup-with-noodles-and-chicken-kharchi-tm-harchi-tm.png"
+  },
+  {
+    "title": "Паста італійська XL з креветками у вершковому соусі, Харчі™",
+    "link": "https://harchifood.com/shop/drugi-stravi/pasta-italijska-z-krevetkamy-u-vershkovomu-sousi-harchi-tm/",
+    "priceLow": 229,
+    "priceHigh": 299,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 249
+      },
+      {
+        "qty": 6,
+        "price": 239
+      },
+      {
+        "qty": 12,
+        "price": 229
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/05/pasta-italijska-z-krevetkamy-u-vershkovomu-sousi-harchi-tm-italian-pasta-with-shrimp-in-a-creamy-sauce-harchi-tm.png"
+  },
+  {
+    "title": "Борщ український XL зі смачною куркою, Харчі™",
+    "link": "https://harchifood.com/shop/pershi-stravi/borshh-ukrayinskyj-zi-smachnoyu-kurkoyu-harchi-xl/",
+    "priceLow": 179,
+    "priceHigh": 229,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 199
+      },
+      {
+        "qty": 6,
+        "price": 189
+      },
+      {
+        "qty": 12,
+        "price": 179
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/05/borshh-ukrayinskyj-zi-smachnoyu-kurkoyu-harchi-xl.png"
+  },
+  {
+    "title": "Кедровий горіх &#8220;Золота Колекція&#8221; — преміум кедровий горіх (ціна за 1 грам)",
+    "link": "https://harchifood.com/shop/snacks/kedrovyj-gorih-zolota-kolekcziya-premium-kedrovyj-gorih/",
+    "priceLow": 2.8,
+    "priceHigh": 2.8,
+    "tiers": [],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/04/pine-nut_harchifood.com_.png"
+  },
+  {
+    "title": "Фундук &#8220;Золота Колекція&#8221; — преміум смажений фундук (ціна за 1 грам)",
+    "link": "https://harchifood.com/shop/snacks/funduk-zolota-kolekcziya-premium-smazhenyj-funduk-czina-za-1-gram/",
+    "priceLow": 1.2,
+    "priceHigh": 1.2,
+    "tiers": [],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/04/roasted-hazelnuts_harchifood.com_.png"
+  },
+  {
+    "title": "Кеш’ю &#8220;Золота Колекція&#8221; — преміум смажений кеш’ю (ціна за 1 грам)",
+    "link": "https://harchifood.com/shop/snacks/keshyu-zolota-kolekcziya-premium-smazhenyj-keshyu-czina-za-1-gram/",
+    "priceLow": 0.82,
+    "priceHigh": 0.82,
+    "tiers": [],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/04/roasted-cashews_harchifood.com_.png"
+  },
+  {
+    "title": "Фісташка &#8220;Королівська&#8221;  — преміум смажені фісташки (ціна за 1 грам)",
+    "link": "https://harchifood.com/shop/snacks/fistashka-korolivska-premium-smazheni-fistashky-czina-za-1-gram/",
+    "priceLow": 0.7,
+    "priceHigh": 0.7,
+    "tiers": [],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/04/pistachios_harchifood.com_.png"
+  },
+  {
+    "title": "Преміум смажений мигдаль — перекус, до якого повертаються. (ціна за 1 грам)",
+    "link": "https://harchifood.com/shop/snacks/premium-smazhenyj-mygdal-perekus-do-yakogo-povertayutsya/",
+    "priceLow": 0.8,
+    "priceHigh": 0.8,
+    "tiers": [],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/04/eb272139-2506-4cd7-a018-6af94e800bb5.png"
+  },
+  {
+    "title": "Паста з креветками у ніжному вершковому соусі, Харчі ТМ",
+    "link": "https://harchifood.com/shop/drugi-stravi/pasta-z-krevetkamy-u-nizhnomu-vershkovomu-sousi/",
+    "priceLow": 209,
+    "priceHigh": 249,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 229
+      },
+      {
+        "qty": 6,
+        "price": 219
+      },
+      {
+        "qty": 12,
+        "price": 209
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2026/03/pasta-z-krevetkamy-u-nizhnomu-vershkovomu-sousi.png"
+  },
+  {
+    "title": "Плов, багато рису &#8220;Басматі&#8221;, курки та солодкої моркви, Харчі ТМ",
+    "link": "https://harchifood.com/shop/drugi-stravi/plov-bagato-rysu-basmati-kurky-ta-solodkoyi-morkvy-harchi-tm/",
+    "priceLow": 149,
+    "priceHigh": 189,
+    "tiers": [
+      {
+        "qty": 2,
+        "price": 159
+      },
+      {
+        "qty": 5,
+        "price": 149
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2025/10/plov-bagato-rysu-basmati-kurky-ta-solodkoyi-morkvy-harchi-tm.png"
+  },
+  {
+    "title": "Борщ, густий насичений овочевий смак з соковитою куркою, Харчі ТМ",
+    "link": "https://harchifood.com/shop/pershi-stravi/borshh-gustyj-nasychenyj-ovochevyj-smak-z-sokovytoyu-kurkoyu-harchi-tm/",
+    "priceLow": 149,
+    "priceHigh": 189,
+    "tiers": [
+      {
+        "qty": 2,
+        "price": 159
+      },
+      {
+        "qty": 5,
+        "price": 149
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2025/10/borshh-gustyj-nasychenyj-ovochevyj-smak-z-sokovytoyu-kurkoyu-harchi-tm.png"
+  },
+  {
+    "title": "Харчо, гостренький суп куркою, рисом та пряними спеціями, Харчі ТМ",
+    "link": "https://harchifood.com/shop/pershi-stravi/harcho-gostrenkyj-sup-kurkoyu-rysom-ta-pryanymy-specziyamy-harchi-tm/",
+    "priceLow": 149,
+    "priceHigh": 189,
+    "tiers": [
+      {
+        "qty": 2,
+        "price": 159
+      },
+      {
+        "qty": 5,
+        "price": 149
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2025/10/harcho-gostrenkyj-sup-kurkoyu-rysom-ta-pryanymy-specziyamy.png"
+  },
+  {
+    "title": "100% Сублімат. Місо-суп з креветками  і сиром тофу",
+    "link": "https://harchifood.com/shop/usi-tovari/100-sublimat-miso-sup-with-shrimp-and-tofu-cheese/",
+    "priceLow": 209,
+    "priceHigh": 249,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 229
+      },
+      {
+        "qty": 6,
+        "price": 219
+      },
+      {
+        "qty": 12,
+        "price": 209
+      }
+    ],
+    "expected": true,
+    "img": "https://harchifood.com/wp-content/uploads/2025/05/100-sublimat.-miso-sup-z-krevetkamy-i-syrom-tofu.png"
+  },
+  {
+    "title": "Кукурудзяна каша з копченим сиром Сулугуні, Харчі ТМ",
+    "link": "https://harchifood.com/shop/snidanki/kukurudzyana-kasha-z-kopchenym-syrom-suluguni/",
+    "priceLow": 75,
+    "priceHigh": 90,
+    "tiers": [
+      {
+        "qty": 10,
+        "price": 85
+      },
+      {
+        "qty": 15,
+        "price": 80
+      },
+      {
+        "qty": 20,
+        "price": 75
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2024/04/kukurudzyana-kasha-z-kopchenym-syrom-suluguni-harchi-tm.png"
+  },
+  {
+    "title": "Кава в дріп-пакеті. 100% Єфіопська Арабіка, Харчі ТМ",
+    "link": "https://harchifood.com/shop/usi-tovari/kava-arabika-efiopia-u-filtr-paketi-harchi-tm/",
+    "priceLow": 35,
+    "priceHigh": 50,
+    "tiers": [
+      {
+        "qty": 10,
+        "price": 45
+      },
+      {
+        "qty": 15,
+        "price": 40
+      },
+      {
+        "qty": 20,
+        "price": 35
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2023/05/arabyka1000_1000.png"
+  },
+  {
+    "title": "100% Сублімат. Суп &#8220;Том Ям Кунг&#8221; (Тайський суп з креветками)",
+    "link": "https://harchifood.com/shop/usi-tovari/100-sublimat-sup-tom-yam-kung/",
+    "priceLow": 209,
+    "priceHigh": 249,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 229
+      },
+      {
+        "qty": 6,
+        "price": 219
+      },
+      {
+        "qty": 12,
+        "price": 209
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2020/11/100-sublimat.-sup-tom-yan-kung-tajskyj-sup-z-krevetkamy.png"
+  },
+  {
+    "title": "Суп-пюре з печериць, Харчі ТМ",
+    "link": "https://harchifood.com/shop/pershi-stravi/sup-pyure-z-pecherycz-harchi-tm/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2020/10/sup-pyure-z-pecherycz-harchi-tm.png"
+  },
+  {
+    "title": "Кус-кус зі свининою та овочами, Харчі ТМ",
+    "link": "https://harchifood.com/shop/drugi-stravi/kus-kus-marokkanskiy-z-ovochami/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2018/08/kus-kus-zi-svynynoyu-ta-ovochamy-harchi-tm.png"
+  },
+  {
+    "title": "Чіа-пудинг шоколадний, Харчі ТМ",
+    "link": "https://harchifood.com/shop/snidanki/chia-puding-chocolate/",
+    "priceLow": 70,
+    "priceHigh": 90,
+    "tiers": [
+      {
+        "qty": 10,
+        "price": 80
+      },
+      {
+        "qty": 15,
+        "price": 75
+      },
+      {
+        "qty": 20,
+        "price": 70
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2017/12/chia-pudyng-shokoladnyj-harchi-tm.png"
+  },
+  {
+    "title": "Чіа-пудинг зі шматочками журавлини, Харчі ТМ",
+    "link": "https://harchifood.com/shop/snidanki/chia-puding-zi-shmatochkami-guravliny/",
+    "priceLow": 70,
+    "priceHigh": 90,
+    "tiers": [
+      {
+        "qty": 10,
+        "price": 80
+      },
+      {
+        "qty": 15,
+        "price": 75
+      },
+      {
+        "qty": 20,
+        "price": 70
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2017/12/chia-pudyng-zi-shmatochkamy-zhuravlyny-harchi-tm.png"
+  },
+  {
+    "title": "Какао на коров’ячому молоці, Харчі ТМ",
+    "link": "https://harchifood.com/shop/usi-tovari/kakao-na-korov-yachomu-molotsi-harchi-tm/",
+    "priceLow": 50,
+    "priceHigh": 60,
+    "tiers": [
+      {
+        "qty": 10,
+        "price": 55
+      },
+      {
+        "qty": 20,
+        "price": 50
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2017/11/kakao-na-korovyachomu-moloczi-harchi-tm.png"
+  },
+  {
+    "title": "Суп курячий з локшиною, Харчі ТМ",
+    "link": "https://harchifood.com/shop/pershi-stravi/sup-kuryachiy-z-lokshinoyu-harchi-tm/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2017/09/sup-kuryachyj-z-lokshynoyu-harchi-tm.png"
+  },
+  {
+    "title": "Картопля зі свининою та овочами, Харчі ТМ",
+    "link": "https://harchifood.com/shop/drugi-stravi/kartoplya-zi-svininoyu-ta-ovochami-harchi-tm/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2017/06/kartoplya-zi-svynynoyu-ta-ovochamy-harchi-tm.png"
+  },
+  {
+    "title": "Суп гороховий зі свининою, Харчі ТМ",
+    "link": "https://harchifood.com/shop/pershi-stravi/pea-soup-with-pork-harchi/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2016/09/sup-gorohovyj-zi-svynynoyu-harchi-tm.png"
+  },
+  {
+    "title": "Борщ зі свининою, Харчі ТМ",
+    "link": "https://harchifood.com/shop/pershi-stravi/borsch-with-pork-harchi/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2016/07/borshh-zi-svynynoyu-harchi-tm-1.png"
+  },
+  {
+    "title": "Батончик вівсяний з журавлиною, Вівсянчик ТМ",
+    "link": "https://harchifood.com/shop/snacks/oat-bar-with-cranberry-vivsyanchik/",
+    "priceLow": 35,
+    "priceHigh": 35,
+    "tiers": [],
+    "expected": true,
+    "img": "https://harchifood.com/wp-content/uploads/2016/06/vivsyanchik-klukva-new.png"
+  },
+  {
+    "title": "Батончик вівсяний з чорносливом, Вівсянчик ТМ",
+    "link": "https://harchifood.com/shop/snacks/oat-bar-with-prune-vivsyanchik/",
+    "priceLow": 35,
+    "priceHigh": 35,
+    "tiers": [],
+    "expected": true,
+    "img": "https://harchifood.com/wp-content/uploads/2016/06/vivsyanchik-chornosliv-new.png"
+  },
+  {
+    "title": "Батончик вівсяний з курагою, Вівсянчик ТМ",
+    "link": "https://harchifood.com/shop/snacks/oat-bar-with-apricots-vivsyanchik/",
+    "priceLow": 35,
+    "priceHigh": 35,
+    "tiers": [],
+    "expected": true,
+    "img": "https://harchifood.com/wp-content/uploads/2016/06/vivsyanchik-abrikos-new.png"
+  },
+  {
+    "title": "Рис зі свининою та овочами, Харчі ТМ",
+    "link": "https://harchifood.com/shop/drugi-stravi/rice-porridge-with-meat-harchi/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2015/10/rys-zi-svynynoyu-ta-ovochamy-harchi-tm.png"
+  },
+  {
+    "title": "Каша вівсяна з фруктами, Харчі ТМ",
+    "link": "https://harchifood.com/shop/snidanki/oat-porridge-with-fruits-harchi/",
+    "priceLow": 60,
+    "priceHigh": 75,
+    "tiers": [
+      {
+        "qty": 10,
+        "price": 70
+      },
+      {
+        "qty": 15,
+        "price": 65
+      },
+      {
+        "qty": 20,
+        "price": 60
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2015/01/kasha-vivsyana-z-fruktamy-harchi-tm.png"
+  },
+  {
+    "title": "Каша бананова з фруктами, Харчі ТМ",
+    "link": "https://harchifood.com/shop/snidanki/banana-porridge-with-fruits-harchi/",
+    "priceLow": 85,
+    "priceHigh": 110,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 95
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2015/01/kasha-bananova-z-fruktamy-harchi-tm-1.png"
+  },
+  {
+    "title": "Гречка зі свининою та овочами, Харчі ТМ",
+    "link": "https://harchifood.com/shop/drugi-stravi/buckwheat-with-meat-harchi/",
+    "priceLow": 85,
+    "priceHigh": 120,
+    "tiers": [
+      {
+        "qty": 3,
+        "price": 100
+      },
+      {
+        "qty": 6,
+        "price": 90
+      },
+      {
+        "qty": 12,
+        "price": 85
+      }
+    ],
+    "expected": false,
+    "img": "https://harchifood.com/wp-content/uploads/2015/01/grechka-zi-svynynoyu-ta-ovochamy-harchi-tm.png"
+  }
+]
