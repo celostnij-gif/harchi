@@ -57,7 +57,7 @@ export default async function RootLayout({
   const { overrides } = await getSiteData();
 
   return (
-    <html lang="uk" suppressHydrationWarning>
+    <html lang="uk" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={`${display.variable} ${inter.variable} antialiased bg-background text-foreground`}
       >

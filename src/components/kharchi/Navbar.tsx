@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Flame, ShoppingBag, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,14 +20,19 @@ export default function Navbar() {
   const setOpen = useCart((s) => s.setOpen);
   const count = cartCount(items);
   const { t } = useLang();
+  const pathname = usePathname();
 
+  /* На головній якоря локальні (#catalog); на внутрішніх сторінках — ведемо на головну (/#catalog) */
+  const isHome = pathname === "/";
+  const anchor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
   const LINKS = [
-    { href: "#catalog", label: t.nav.catalog },
-    { href: "#kits", label: t.nav.kits },
-    { href: "#how", label: t.nav.how },
-    { href: "#reviews", label: t.nav.reviews },
-    { href: "#faq", label: t.nav.faq },
+    { href: anchor("catalog"), label: t.nav.catalog },
+    { href: anchor("kits"), label: t.nav.kits },
+    { href: anchor("how"), label: t.nav.how },
+    { href: anchor("reviews"), label: t.nav.reviews },
+    { href: anchor("faq"), label: t.nav.faq },
   ];
+  const logoHref = isHome ? "#top" : "/";
 
   return (
     <motion.header
@@ -47,8 +54,8 @@ export default function Navbar() {
               : "bg-transparent border border-transparent"
           }`}
         >
-          {/* Logo */}
-          <a href="#top" className="flex items-center gap-2.5 group">
+          {/* Logo — на внутрішніх сторінках веде на головну */}
+          <Link href={logoHref} className="flex items-center gap-2.5 group">
             <span className="relative grid place-items-center size-10 rounded-xl bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 glow-warm group-hover:scale-105 transition-transform">
               <Flame className="size-5.5 text-stone-950" strokeWidth={2.5} />
             </span>
@@ -60,18 +67,18 @@ export default function Navbar() {
                 {t.hero.h1b}
               </span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-1">
             {LINKS.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 className="px-3.5 py-2 rounded-full text-sm text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -116,14 +123,14 @@ export default function Navbar() {
             className="lg:hidden mt-2 rounded-2xl bg-background/95 backdrop-blur-xl border border-border p-2 shadow-2xl"
           >
             {LINKS.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
                 className="block px-4 py-3 rounded-xl text-foreground/85 hover:bg-accent/60"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </motion.div>
         )}

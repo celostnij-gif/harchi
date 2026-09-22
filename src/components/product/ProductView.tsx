@@ -72,7 +72,7 @@ export default function ProductView({
   chips.push({ icon: <Snowflake className="size-3.5" />, text: t.productPage.shelf });
 
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 sm:pt-14 sm:pb-20">
+    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20">
       {/* ember glow */}
       <div className="pointer-events-none absolute -top-24 right-[-120px] size-[420px] rounded-full bg-orange-700/10 blur-[130px]" />
 
