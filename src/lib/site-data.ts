@@ -12,6 +12,7 @@ import {
   PRODUCTS,
   REVIEWS,
   FAQ,
+  type BulkTier,
   type Product as UiProduct,
   type Category as UiCategorySlug,
   type ProductSpec,
@@ -84,6 +85,34 @@ export function parseJsonArray<T>(raw: string | null | undefined): T[] {
   }
 }
 
+/** Defensiv-парсинг Product.bulkTiers (JSON-рядок [{minQty, price}]).
+ *  Приймає і числа, і числові рядки; сортує за minQty; відкидає сміття. */
+export function parseBulkTiers(raw: string | null | undefined): BulkTier[] {
+  const arr = parseJsonArray<Partial<BulkTier> & Record<string, unknown>>(raw);
+  const out: BulkTier[] = [];
+  for (const entry of arr) {
+    if (typeof entry !== "object" || entry === null) continue;
+    const minQty = Number((entry as Record<string, unknown>).minQty);
+    const price = Number((entry as Record<string, unknown>).price);
+    if (!Number.isFinite(minQty) || !Number.isFinite(price)) continue;
+    const q = Math.trunc(minQty);
+    if (q < 2 || price <= 0) continue;
+    out.push({ minQty: q, price });
+  }
+  out.sort((a, b) => a.minQty - b.minQty);
+  // Дублікати minQty: залишаємо найнижчу ціну
+  const dedup: BulkTier[] = [];
+  for (const t of out) {
+    const last = dedup[dedup.length - 1];
+    if (last && last.minQty === t.minQty) {
+      if (t.price < last.price) last.price = t.price;
+    } else {
+      dedup.push({ ...t });
+    }
+  }
+  return dedup;
+}
+
 /** Мапінг Product з БД → UI-тип Product (спільний для головної та сторінки товару). */
 export function mapDbProduct(p: DbProduct): UiProduct {
   return {
@@ -107,6 +136,7 @@ export function mapDbProduct(p: DbProduct): UiProduct {
     weight: p.weight ?? undefined,
     specs: parseJsonArray<ProductSpec>(p.specs),
     productFaq: parseJsonArray<ProductFaqItem>(p.productFaq),
+    bulkTiers: parseBulkTiers((p as { bulkTiers?: string | null }).bulkTiers),
   };
 }
 

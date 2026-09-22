@@ -7,12 +7,23 @@ import {
   fail,
   isUniqueConflict,
   ok,
+  BULK_TIERS_RULE,
   PRODUCT_FAQ_RULE,
   SPECS_RULE,
   validateJsonStringArray,
 } from "@/lib/admin-api";
 
 export const runtime = "nodejs";
+
+/** JSON-РЯДОК масиву оптових рівнів [{minQty, price}]. */
+const bulkTiersField = z
+  .string()
+  .max(20_000)
+  .superRefine((val, ctx) => {
+    const err = validateJsonStringArray(val, BULK_TIERS_RULE);
+    if (err)
+      ctx.addIssue({ code: "custom", message: `bulkTiers.${err} (валідний JSON-масив обʼєктів {minQty, price})` });
+  });
 
 /** JSON-РЯДОК масиву характеристик [{labelUk,valueUk,labelEn,valueEn}]. */
 const specsField = z
@@ -45,6 +56,7 @@ const productSchema = z.object({
   descriptionEn: z.string().trim().max(5000).default(""),
   specs: specsField.default("[]"),
   productFaq: productFaqField.default("[]"),
+  bulkTiers: bulkTiersField.default("[]"),
   portionUk: z.string().trim().max(200).default(""),
   portionEn: z.string().trim().max(200).default(""),
   cats: z.string().trim().max(500).default(""),
@@ -71,6 +83,7 @@ const productPatchSchema = z.object({
   descriptionEn: z.string().trim().max(5000).optional(),
   specs: specsField.optional(),
   productFaq: productFaqField.optional(),
+  bulkTiers: bulkTiersField.optional(),
   portionUk: z.string().trim().max(200).optional(),
   portionEn: z.string().trim().max(200).optional(),
   cats: z.string().trim().max(500).optional(),

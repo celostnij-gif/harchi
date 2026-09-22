@@ -244,6 +244,8 @@ export interface UIStrings {
     added: string;
     addedDesc: string;
     addAria: string;
+    /** "Від {qty} шт. — {price}" (рядки оптових рівнів на картці). */
+    bulkFrom: string;
   };
   /** Рядки сторінки товару (Task 6.4) */
   productPage: {
@@ -278,6 +280,8 @@ export interface UIStrings {
     errRating: string;
     errText: string;
     errConnection: string;
+    /** "Оптом дешевше" (заголовок блоку оптових рівнів на сторінці товару). */
+    bulkTitle: string;
   };
   badge: Record<string, string>;
   kits: {
@@ -415,6 +419,7 @@ export const STRINGS: Record<Lang, UIStrings> = {
       added: "Додано в кошик",
       addedDesc: "",
       addAria: "Додати {name} в кошик",
+      bulkFrom: "Від {qty} шт. — {price}",
     },
     productPage: {
       home: "Головна",
@@ -448,6 +453,7 @@ export const STRINGS: Record<Lang, UIStrings> = {
       errRating: "Оберіть оцінку від 1 до 5",
       errText: "Відгук — щонайменше 5 символів",
       errConnection: "Не вдалося надіслати відгук. Спробуйте ще раз.",
+      bulkTitle: "Оптом дешевше",
     },
     badge: { "ХІТ": "ХІТ", "NEW": "NEW", "ПРЕМІУМ": "ПРЕМІУМ", "-15%": "-15%" },
     kits: {
@@ -599,6 +605,7 @@ export const STRINGS: Record<Lang, UIStrings> = {
       added: "Added to cart",
       addedDesc: "",
       addAria: "Add {name} to cart",
+      bulkFrom: "From {qty} pcs — {price}",
     },
     productPage: {
       home: "Home",
@@ -632,6 +639,7 @@ export const STRINGS: Record<Lang, UIStrings> = {
       errRating: "Pick a rating from 1 to 5",
       errText: "The review must be at least 5 characters",
       errConnection: "Failed to submit the review. Please try again.",
+      bulkTitle: "Cheaper in bulk",
     },
     badge: { "ХІТ": "HIT", "NEW": "NEW", "ПРЕМІУМ": "PREMIUM", "-15%": "-15%" },
     kits: {

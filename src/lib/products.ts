@@ -7,6 +7,12 @@ export type Category =
   | "sneky"
   | "napoi";
 
+/** Оптовий рівень ціни: від minQty штук — ціна price за штуку. */
+export interface BulkTier {
+  minQty: number;
+  price: number;
+}
+
 /** Рядок характеристики товару (з БД Product.specs, JSON) */
 export interface ProductSpec {
   labelUk: string;
@@ -46,6 +52,9 @@ export interface Product {
   kcal?: number;
   /** Вага пакета, г (якщо відома) */
   weight?: number;
+  /** Оптові скидки (з БД Product.bulkTiers, JSON-рядок → розпарсено defensivly).
+   *  [{minQty, price}] — ціна за штуку діє, коли в кошику >= minQty цього товару. */
+  bulkTiers?: BulkTier[];
   /** Характеристики (з БД Product.specs, JSON-рядок → розпарсено defensivly) */
   specs?: ProductSpec[];
   /** Q/A про товар (з БД Product.productFaq, JSON-рядок → розпарсено defensivly) */
@@ -352,12 +361,26 @@ export const PRODUCTS: Product[] = [
 export const formatPrice = (v: number) =>
   `${v.toFixed(0)} грн`;
 
+/** Ціна за штуку з урахуванням оптових рівнів [{minQty, price}] і кількості. */
+export function bulkUnitPrice(base: number, tiers: BulkTier[] | undefined, qty: number): number {
+  if (!tiers?.length || qty <= 0) return base;
+  let best = base;
+  for (const t of tiers) {
+    if (Number.isFinite(t.minQty) && Number.isFinite(t.price) && qty >= t.minQty && t.price > 0 && t.price < best) {
+      best = t.price;
+    }
+  }
+  return best;
+}
+
 export interface CartItem {
   id: string;
   name: string;
   price: number;
   img: string;
   qty: number;
+  /** Роздрібна ціна за шт. (база для перерахунку оптових рівнів при зміні qty). */
+  basePrice?: number;
 }
 
 export const REVIEWS = [

@@ -95,10 +95,18 @@ export const PRODUCT_FAQ_RULE: JsonFieldRule = {
   maxItems: 40,
 };
 
+/** Product.bulkTiers — [{minQty,price}] як JSON-РЯДОК (числа або числові рядки). */
+export const BULK_TIERS_RULE: JsonFieldRule = {
+  keys: ["minQty", "price"],
+  maxItems: 20,
+};
+
 /**
  * SAFE-парсинг поля товару, що зберігається як JSON-РЯДОК масиву пласких
  * обʼєктів. Повертає null якщо валідно, інакше — короткий код помилки
  * (`invalid_json`, `not_array`, `item_0.labelUk_must_be_string`, …).
+ * Для BULK_TIERS_RULE значення minQty/price можуть бути числами або
+ * числовими рядками (перевіряємо Number(v)).
  */
 export function validateJsonStringArray(
   raw: string,
@@ -112,6 +120,7 @@ export function validateJsonStringArray(
   }
   if (!Array.isArray(parsed)) return "not_array";
   if (parsed.length > rule.maxItems) return `max_${rule.maxItems}_items`;
+  const isBulk = rule === BULK_TIERS_RULE;
   for (let i = 0; i < parsed.length; i++) {
     const entry = parsed[i];
     if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
@@ -120,6 +129,15 @@ export function validateJsonStringArray(
     const o = entry as Record<string, unknown>;
     for (const key of rule.keys) {
       const v = o[key];
+      if (isBulk) {
+        const n = Number(v);
+        if (!Number.isFinite(n)) return `item_${i}.${key}_must_be_number`;
+        if (key === "minQty" && (!Number.isInteger(n) || n < 2 || n > 9999))
+          return `item_${i}.${key}_out_of_range_2_9999`;
+        if (key === "price" && (n <= 0 || n > 1_000_000))
+          return `item_${i}.${key}_out_of_range`;
+        continue;
+      }
       if (typeof v !== "string") return `item_${i}.${key}_must_be_string`;
       if (v.length > 500) return `item_${i}.${key}_too_long`;
     }

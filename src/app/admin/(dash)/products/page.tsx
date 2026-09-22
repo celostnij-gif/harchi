@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import {
   ImageIcon,
@@ -75,6 +75,7 @@ interface AdminProduct {
   descriptionEn: string;
   specs: string;
   productFaq: string;
+  bulkTiers: string;
   portionUk: string;
   portionEn: string;
   cats: string;
@@ -115,6 +116,12 @@ interface FaqPair {
   aEn: string;
 }
 
+/** Оптові рівні ціни (Product.bulkTiers — JSON-рядок [{minQty, price}]). */
+interface BulkTierPair {
+  minQty: string;
+  price: string;
+}
+
 interface ProductForm {
   slug: string;
   nameUk: string;
@@ -126,6 +133,7 @@ interface ProductForm {
   specsUk: string;
   specsEn: string;
   faqItems: FaqPair[];
+  bulkTiers: BulkTierPair[];
   portionUk: string;
   portionEn: string;
   catList: string[];
@@ -152,6 +160,7 @@ const EMPTY_FORM: ProductForm = {
   specsUk: "",
   specsEn: "",
   faqItems: [],
+  bulkTiers: [],
   portionUk: "",
   portionEn: "",
   catList: [],
@@ -294,6 +303,47 @@ function buildFaqJson(items: FaqPair[]): string {
   return JSON.stringify(out);
 }
 
+/** Product.bulkTiers (JSON-рядок [{minQty, price}]) → пари для форми (defensive). */
+function bulkToItems(raw: string): BulkTierPair[] {
+  try {
+    const parsed: unknown = JSON.parse(raw || "[]");
+    if (!Array.isArray(parsed)) return [];
+    const out: BulkTierPair[] = [];
+    for (const entry of parsed) {
+      if (typeof entry !== "object" || entry === null) continue;
+      const o = entry as Record<string, unknown>;
+      out.push({
+        minQty: o.minQty === undefined || o.minQty === null ? "" : String(o.minQty),
+        price: o.price === undefined || o.price === null ? "" : String(o.price),
+      });
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Збірка Product.bulkTiers (JSON-рядок): пари з порожніми полями пропускаються,
+ * решта — числами {minQty: int ≥ 2, price: > 0}; сортуємо за minQty.
+ */
+function buildBulkJson(items: BulkTierPair[]): string {
+  const out = items
+    .map((p) => ({ minQty: Number(p.minQty), price: Number(p.price) }))
+    .filter((p) => p.minQty !== 0 || p.price !== 0)
+    .map((p) => ({ minQty: Math.trunc(p.minQty), price: Math.round(p.price * 100) / 100 }))
+    .filter((p) => Number.isInteger(p.minQty) && p.minQty >= 2 && p.price > 0)
+    .sort((a, b) => a.minQty - b.minQty);
+  return JSON.stringify(out);
+}
+
+/** Превʼю оптових рівнів для таблиці: "від 3 — 199 грн · від 6 — 189 грн". */
+function bulkPreview(raw: string): string {
+  const items = bulkToItems(raw).filter((p) => p.minQty !== "" && p.price !== "");
+  if (!items.length) return "";
+  return items.map((p) => `від ${p.minQty} — ${p.price} грн`).join(" · ");
+}
+
 function formFromProduct(p: AdminProduct): ProductForm {
   return {
     slug: p.slug,
@@ -306,6 +356,7 @@ function formFromProduct(p: AdminProduct): ProductForm {
     specsUk: specsToFormText(p.specs ?? "[]", "uk"),
     specsEn: specsToFormText(p.specs ?? "[]", "en"),
     faqItems: faqToItems(p.productFaq ?? "[]"),
+    bulkTiers: bulkToItems(p.bulkTiers ?? "[]"),
     portionUk: p.portionUk,
     portionEn: p.portionEn,
     catList: p.cats ? p.cats.split(",").filter(Boolean) : [],
@@ -405,6 +456,26 @@ export default function AdminProductsPage() {
       faqItems: f.faqItems.filter((_, i) => i !== idx),
     }));
 
+  /* ------------- Оптові рівні: динамічний список пар minQty/price ------------- */
+
+  const setBulk = (idx: number, key: keyof BulkTierPair, value: string) =>
+    setForm((f) => ({
+      ...f,
+      bulkTiers: f.bulkTiers.map((p, i) => (i === idx ? { ...p, [key]: value } : p)),
+    }));
+
+  const addBulk = () =>
+    setForm((f) => ({
+      ...f,
+      bulkTiers: [...f.bulkTiers, { minQty: "", price: "" }],
+    }));
+
+  const removeBulk = (idx: number) =>
+    setForm((f) => ({
+      ...f,
+      bulkTiers: f.bulkTiers.filter((_, i) => i !== idx),
+    }));
+
   const openCreate = () => {
     setEditing(null);
     setForm(EMPTY_FORM);
@@ -450,6 +521,17 @@ export default function AdminProductsPage() {
       if (Number.isNaN(old) || old < 0) return "Стара ціна — число ≥ 0";
     }
     if (!form.image.trim()) return "Зображення обовʼязкове (URL або файл)";
+    for (const [i, b] of form.bulkTiers.entries()) {
+      const qEmpty = b.minQty.trim() === "";
+      const pEmpty = b.price.trim() === "";
+      if (qEmpty && pEmpty) continue; // порожня пара — пропускається при збереженні
+      if (qEmpty || pEmpty) return `Оптовий рівень #${i + 1}: заповни і кількість, і ціну`;
+      const q = Number(b.minQty);
+      const pr = Number(b.price);
+      if (!Number.isInteger(q) || q < 2) return `Оптовий рівень #${i + 1}: кількість — ціле число ≥ 2`;
+      if (!Number.isFinite(pr) || pr <= 0) return `Оптовий рівень #${i + 1}: ціна — число > 0`;
+      if (pr >= Number(form.price)) return `Оптовий рівень #${i + 1}: оптова ціна має бути нижчою за роздрібну`;
+    }
     return null;
   };
 
@@ -472,6 +554,7 @@ export default function AdminProductsPage() {
       descriptionEn: form.descriptionEn.trim(),
       specs: buildSpecsJson(form.specsUk, form.specsEn),
       productFaq: buildFaqJson(form.faqItems),
+      bulkTiers: buildBulkJson(form.bulkTiers),
       portionUk: form.portionUk.trim(),
       portionEn: form.portionEn.trim(),
       cats: form.catList.join(","),
@@ -678,6 +761,14 @@ export default function AdminProductsPage() {
                           {p.oldPrice !== null && (
                             <div className="text-xs text-muted-foreground line-through">
                               {p.oldPrice} грн
+                            </div>
+                          )}
+                          {bulkPreview(p.bulkTiers ?? "[]") && (
+                            <div
+                              className="mt-1 max-w-44 whitespace-normal text-[11px] leading-tight text-emerald-600 dark:text-emerald-400"
+                              title={bulkPreview(p.bulkTiers ?? "[]")}
+                            >
+                              {bulkPreview(p.bulkTiers ?? "[]")}
                             </div>
                           )}
                         </TableCell>
@@ -1022,6 +1113,80 @@ export default function AdminProductsPage() {
                   })}
                 </div>
               )}
+            </div>
+
+            <div className="space-y-2 rounded-xl border border-border/60 p-3">
+              <div className="flex items-center justify-between">
+                <Label>Оптові скидки (від кількості)</Label>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={addBulk}
+                >
+                  <Plus className="size-4" /> Додати рівень
+                </Button>
+              </div>
+              {form.bulkTiers.length === 0 ? (
+                <p className="text-[11px] text-muted-foreground">
+                  Рівнів немає — товар продається за роздрібною ціною.
+                  Додай рівень «від N шт. — ціна», як на harchifood.com
+                  (напр. від 3 шт. — 199 грн).
+                </p>
+              ) : (
+                <div className="space-y-2">
+                  {form.bulkTiers.map((tier, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2 rounded-lg border border-border/60 bg-muted/30 p-2"
+                    >
+                      <span className="shrink-0 text-xs text-muted-foreground">
+                        Від
+                      </span>
+                      <Input
+                        type="number"
+                        min="2"
+                        step="1"
+                        value={tier.minQty}
+                        onChange={(e) => setBulk(idx, "minQty", e.target.value)}
+                        placeholder="3"
+                        className="w-20"
+                        aria-label={`Оптовий рівень ${idx + 1}: кількість від`}
+                      />
+                      <span className="shrink-0 text-xs text-muted-foreground">
+                        шт. —
+                      </span>
+                      <Input
+                        type="number"
+                        min="0"
+                        step="1"
+                        value={tier.price}
+                        onChange={(e) => setBulk(idx, "price", e.target.value)}
+                        placeholder="199"
+                        className="w-24"
+                        aria-label={`Оптовий рівень ${idx + 1}: ціна за шт.`}
+                      />
+                      <span className="shrink-0 text-xs text-muted-foreground">
+                        грн
+                      </span>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="ml-auto size-7 shrink-0 text-red-400 hover:text-red-400"
+                        onClick={() => removeBulk(idx)}
+                        aria-label={`Видалити оптовий рівень ${idx + 1}`}
+                      >
+                        <Trash2 className="size-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p className="text-[11px] text-muted-foreground">
+                Порожні рядки не зберігаються. Оптова ціна має бути нижчою за
+                роздрібну.
+              </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
