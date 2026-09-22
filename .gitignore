@@ -71,5 +71,15 @@ npm-install.log
 # zip archives
 *.zip
 
+# WP-мініатюри (-300x300 тощо) — не комітимо: імпортер мапить їх на оригінали,
+# Next.js сам генерує розміри; оригінали лежать поруч у public/uploads/
+/public/uploads/**/*-[0-9]*x[0-9]*.png
+/public/uploads/**/*-[0-9]*x[0-9]*.jpg
+/public/uploads/**/*-[0-9]*x[0-9]*.jpeg
+/public/uploads/**/*-[0-9]*x[0-9]*.gif
+/public/uploads/**/*-[0-9]*x[0-9]*.webp
+/public/uploads/**/*-[0-9]*x[0-9]*.avif
+
+
 # тимчасовий бекап harchifood.com для редизайну (temp/site, ~335 MB, не комітити)
 /temp/
