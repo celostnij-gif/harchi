@@ -70,3 +70,6 @@ npm-install.log
 
 # zip archives
 *.zip
+
+# тимчасовий бекап harchifood.com для редизайну (temp/site, ~335 MB, не комітити)
+/temp/

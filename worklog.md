@@ -294,3 +294,22 @@ Work Log:
 
 Stage Summary:
 - Повний цикл: головна → картка товару (лінк) → сторінка з описом/характеристиками/FAQ/відгуками/рекомендаціями → залишити відгук → адмінка (модерація + редагування товару) → зміни миттєво на сайті
+
+---
+Task ID: 7.1
+Agent: Cline
+Task: Перенос бекапу harchifood.com (temp/site) у проєкт — ассети + контент у БД
+
+Work Log:
+- Бекап temp/site: 668/668 сторінок, ~350+ файлів uploads (докачка фоном через dlall.py asset_priority.txt: 3382 URL = 579 оригіналів + 2803 мініатури; попередні збої — рейт-ліміт при 8 паралельних шардах, перезапущено з 3)
+- prisma/schema.prisma: додано модель ContentPage (slug@id, kind page|post, title/excerpt/body uk+en, coverImage, legacyUrl, publishedAt, isActive, sort, seoTitle/Desc) → npx prisma db push --accept-data-loss
+- .zscripts/catalog-map.cjs — згенеровано (extract-catalog-map.cjs): LIVE_CATS (8 категорій), WOO_TO_LOCAL (41 слаг), BULK-рівні
+- .zscripts/import-assets.cjs (ідемпотентний): інвентар temp/site/wp-content/uploads → public/uploads/YYYY/MM (мініатюри мапляться на оригінали), фото товарів → public/products/<localSlug>.<ext> + Product.image, бренд-лого → public/brand/legacy-*, MediaAsset upsert, карта download/legacy-assets.json (3229 URL). media=70 у БД, 63 файли public/products (заповнено ще sync-live-catalog)
+- .zscripts/import-content.cjs (ідемпотентний, upsert по slug): джерело temp/site/_api/wp-json_wp_v2_{pages,posts,media}_p1.json; SKIP_SLUGS — 21 службова (cart/checkout/my-account тощо); чистка body: script/style/iframe/коментарі/шорткоди/font, декодування entity; локалізація посилань через legacy-assets.json (з фолбеком мініатюра→оригінал); excerpt з першого абзацу (excerptFrom), cover з featured_media→мапа або перша картка body; publishedAt з WP date; seo-поля. Dry-run + реальний прогін
+- Результат імпорту: ContentPage 18 сторінок + 8 постів, пропущено 45 (службові/порожні), scripts у body=0, шорткодів=0; download/content-import-report.json — звіт по кожному slug
+- Автофіналізація: temp/finalize-import.cmd (запущений у фоні) чекає завершення python-докачки, потім сам перезапускає import-assets + import-content (мапа стане повною → віддалені зображення в body локалізуються) і пише download/finalize-import.log
+- temp/ не комітиться (у .gitignore)
+
+Stage Summary:
+- Уся статика старого сайту доступна у public/uploads (структура YYYY/MM збережена), контент сторінок/постів — у ContentPage (uk), медіатека адмінки наповнена (MediaAsset)
+- Далі (редизайн): публічний рендер контенту (роут /content/[slug] або /blog) з bodyUk через dangerouslySetInnerHTML (уже чисто), обкладинки, перелинковка legacy URL → нові роути; перегенерувати імпорти після докачки ассетів (finalize-import.cmd зробить сам)
